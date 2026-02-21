@@ -9,6 +9,12 @@ cask "nexel" do
 
   app "Nexel.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/Nexel.app"],
+                   sudo: false
+  end
+
   zap trash: [
     "~/Library/Application Support/Nexel",
     "~/Library/Preferences/com.nexel.app.plist",
